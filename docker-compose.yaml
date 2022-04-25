@@ -7,6 +7,8 @@ services:
     environment:
       - POSTGRES_HOST_AUTH_METHOD=trust
       - POSTGRES_PASSWORD='postgres'
+    networks:
+      - macacoweb
 
   web:
     build: .
@@ -17,16 +19,11 @@ services:
       - "3001:3001"
     depends_on:
       - db
+    networks:
+      - macacoweb
 
-  # amqp:
-  #   image: rabbitmq:3-management-alpine
-  #   container_name: 'rabbitmq-receiver'
-  #   volumes:
-  #     - ./git/amqp/config/rabbitmq.config:/etc/rabbitmq/conf.d/10-defaults.conf
-  #     - ./git/amqp/config/definitions.json:/etc/rabbitmq/definitions.json
-  #   environment:
-  #     - RABBITMQ_DEFAULT_USER=guest
-  #     - RABBITMQ_DEFAULT_PASS=guest
-  #   ports:
-  #     - 5672:5672
-  #     - 15672:15672
+networks:
+  macacoweb:
+    external: 
+      name: wt-pokemon-mq_macacoweb
+    
