@@ -25,6 +25,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'redis-rails'
 gem 'redis-namespace'
 gem 'sneakers'
+gem 'elasticsearch'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
